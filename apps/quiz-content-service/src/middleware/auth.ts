@@ -4,7 +4,7 @@ import { constant } from "../constant";
 export const auth = (req: Request, res: Response, next: NextFunction): void => {
   const apiKey = req.headers["x-api-key"] as string;
   if (apiKey !== constant.apiKey) {
-    res.status(403).json({ error: "[QuizService] Forbidden" });
+    res.status(403).json({ error: "[QuizContentService] Forbidden" });
     return;
   }
   

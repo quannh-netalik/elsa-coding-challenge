@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export interface IQuiz {
+export interface IQuizContent {
   question: string;
   answers: string[];
   correctAnswer: string;
@@ -8,7 +8,7 @@ export interface IQuiz {
   timeout: number;
 }
 
-export const quizSchema = new mongoose.Schema<IQuiz>({
+export const quizContentSchema = new mongoose.Schema<IQuizContent>({
   question: { type: String, required: true },
   answers: { type: [String], required: true },
   correctAnswer: { type: String, required: true },
@@ -16,4 +16,4 @@ export const quizSchema = new mongoose.Schema<IQuiz>({
   timeout: { type: Number, required: true },
 });
 
-export const Quiz = mongoose.model<IQuiz>("Quiz", quizSchema);
+export const QuizContent = mongoose.model<IQuizContent>("QuizContent", quizContentSchema);

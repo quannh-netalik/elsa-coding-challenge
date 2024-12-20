@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Queue from "bull";
 
-import { ILog, Log } from "../model/log.model";
+import { Log } from "../model/log.model";
 import { constant } from "../constant";
 
 export const logQueue = new Queue("logQueue", constant.redisUri);

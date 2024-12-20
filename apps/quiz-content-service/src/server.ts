@@ -19,7 +19,7 @@ app.use(express.json());
 mongoose
   .connect(constant.mongoUri)
   .then(() => {
-    console.log("[QuizService] Connected to MongoDB");
+    console.log("[QuizContentService] Connected to MongoDB");
   })
   .catch((err) => {
     console.error("Failed to connect to MongoDB:", err);
@@ -39,6 +39,6 @@ app.post("/quiz-generation", auth, quizGeneration);
 
 // Start the server
 app.listen(PORT, async () => {
-  console.log(`Quiz service is running on port ${PORT}`);
+  console.log(`[QuizContentService] is running on port ${PORT}`);
   await bootstrapData();
 });

@@ -1,5 +1,5 @@
 {
-  "name": "quiz-service",
+  "name": "quiz-content-service",
   "version": "1.0.0",
   "main": "dist/server.js",
   "scripts": {
