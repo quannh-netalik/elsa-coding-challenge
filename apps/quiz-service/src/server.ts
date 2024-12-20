@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config({ path: __dirname + "../.env" });
 
 import { auth, logIncomingRequest } from "./middleware";
-import { bootstrapData } from "./utils/boostrapData";
+import { bootstrapData } from "./utils/bootstrapData";
 import { quizGeneration } from "./controller/quiz.controller";
 import { constant } from "./constant";
 

@@ -2,12 +2,16 @@
   {
     "question": "What is the capital of France?",
     "answers": ["Berlin", "Madrid", "Paris", "Rome"],
-    "correctAnswer": "Paris"
+    "correctAnswer": "Paris",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "Which planet is known as the Red Planet?",
     "answers": ["Earth", "Mars", "Jupiter", "Saturn"],
-    "correctAnswer": "Mars"
+    "correctAnswer": "Mars",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "Who wrote 'Hamlet'?",
@@ -17,7 +21,9 @@
       "Mark Twain",
       "Jane Austen"
     ],
-    "correctAnswer": "William Shakespeare"
+    "correctAnswer": "William Shakespeare",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "What is the largest ocean on Earth?",
@@ -27,12 +33,16 @@
       "Arctic Ocean",
       "Pacific Ocean"
     ],
-    "correctAnswer": "Pacific Ocean"
+    "correctAnswer": "Pacific Ocean",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "What is the chemical symbol for water?",
     "answers": ["H2O", "O2", "CO2", "NaCl"],
-    "correctAnswer": "H2O"
+    "correctAnswer": "H2O",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "Who painted the Mona Lisa?",
@@ -42,22 +52,30 @@
       "Leonardo da Vinci",
       "Claude Monet"
     ],
-    "correctAnswer": "Leonardo da Vinci"
+    "correctAnswer": "Leonardo da Vinci",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "What is the square root of 64?",
     "answers": ["6", "7", "8", "9"],
-    "correctAnswer": "8"
+    "correctAnswer": "8",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "Which country hosted the 2016 Summer Olympics?",
     "answers": ["China", "Brazil", "United Kingdom", "Canada"],
-    "correctAnswer": "Brazil"
+    "correctAnswer": "Brazil",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "What is the hardest natural substance on Earth?",
     "answers": ["Gold", "Iron", "Diamond", "Platinum"],
-    "correctAnswer": "Diamond"
+    "correctAnswer": "Diamond",
+    "point": 10,
+    "timeout": 3000
   },
   {
     "question": "Who discovered penicillin?",
@@ -67,6 +85,8 @@
       "Louis Pasteur",
       "Isaac Newton"
     ],
-    "correctAnswer": "Alexander Fleming"
+    "correctAnswer": "Alexander Fleming",
+    "point": 10,
+    "timeout": 3000
   }
 ]
