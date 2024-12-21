@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { IQuizContent, QuizContent } from "../model/quiz.model";
+import { logger } from "./logger";
 
 // Bootstrap function to import quiz data
 export const bootstrapData = async () => {
@@ -11,8 +12,12 @@ export const bootstrapData = async () => {
   try {
     await QuizContent.deleteMany({});
     await QuizContent.insertMany(quizData);
-    console.log("Quiz data imported successfully");
+    logger.info({
+      message: "QuizData import successfully",
+      correlationId: "NA",
+    });
   } catch (err) {
+    logger.error({ message: err, correlationId: "NA" });
     console.error("Failed to import quiz data:", err);
   }
 };
