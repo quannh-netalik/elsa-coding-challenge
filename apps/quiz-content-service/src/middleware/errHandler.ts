@@ -7,16 +7,12 @@ export const errHandler = (
   res: Response,
   next: NextFunction
 ): void => {
-  const correlationId = req.headers["correlation-id"] as string;
-  logger.error({
-    message: err.stack,
-    correlationId,
-  });
+  logger.error(err.stack);
 
   // Send error response
   res.status(err.status || 500).json({
     error: {
-      message: err.message || "Internal Server Error",
+      message: `[QuizContentService] ${err.message || "Internal Server Error"}`,
     },
   });
 };

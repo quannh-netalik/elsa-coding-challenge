@@ -12,12 +12,11 @@ export const bootstrapData = async () => {
   try {
     await QuizContent.deleteMany({});
     await QuizContent.insertMany(quizData);
-    logger.info({
-      message: "QuizData import successfully",
-      correlationId: "NA",
-    });
+    logger.info("[QuizContentService] QuizData import successfully");
   } catch (err) {
-    logger.error({ message: err, correlationId: "NA" });
-    console.error("Failed to import quiz data:", err);
+    logger.error({
+      msg: "[QuizContentService] Failed to import quiz data",
+      err,
+    });
   }
 };

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { constant } from "./constant";
+import { constant } from "../constant";
 
 mongoose
   .connect(constant.mongoUri)

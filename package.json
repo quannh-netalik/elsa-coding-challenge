@@ -5,13 +5,14 @@
     "packages/*",
     "apps/*"
   ],
-  "dependencies": {},
   "devDependencies": {
     "lerna": "^8.1.9"
   },
   "scripts": {
-    "prestart": "npm run build",
     "build": "lerna run build --parallel",
-    "start": "lerna run start --scope logger-service --scope quiz-service"
+    "start": "lerna run start --scope user-service --scope auth-service --scope quiz-content-service --stream",
+    "dev": "lerna run dev --scope user-service --scope auth-service --scope quiz-content-service --stream",
+    "start:log": "node apps/logger-service/dist/server.js",
+    "dev:log": "nodemon apps/logger-service/src/server.ts"
   }
 }

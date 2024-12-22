@@ -11,16 +11,16 @@ logQueue.process(async (job) => {
   const logs = job.data;
   try {
     await Log.insertMany(logs);
-    console.log(`Inserted ${logs.length} logs into MongoDB`);
+    console.log(`[LoggerService] Inserted ${logs.length} logs into MongoDB`);
   } catch (error) {
-    console.error("Error inserting logs:", error);
+    console.error("[LoggerService] Error inserting logs:", error);
     throw error; // Let Bull retry the job
   }
 });
 
 // Batch queue for log entries
 logQueue.on("waiting", () => {
-  console.log("Log queue is waiting for logs");
+  console.log("[LoggerService] Log queue is waiting for logs");
 });
 
 let batch: any[] = [];

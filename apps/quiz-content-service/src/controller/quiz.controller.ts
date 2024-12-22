@@ -4,8 +4,10 @@ import { QuizContent } from "../model/quiz.model";
 import { constant } from "../constant";
 import { logger } from "../utils/logger";
 
-export const quizGeneration = async (req: Request, res: Response) => {
-  const correlationId = req.headers["correlation-id"] as string;
+export const quizGeneration = async (
+  req: Request,
+  res: Response
+): Promise<any> => {
   const { numberOfQuestions } = req.body;
 
   const count = Math.min(
@@ -15,9 +17,15 @@ export const quizGeneration = async (req: Request, res: Response) => {
 
   try {
     const quizzes = await QuizContent.aggregate([{ $sample: { size: count } }]);
-    res.status(200).json(quizzes);
+    logger.info({
+      msg: "[QuizContentService] Get quizzes successfully",
+      data: quizzes,
+    });
+    return res.status(200).json(quizzes);
   } catch (err) {
-    logger.error({ message: err, correlationId });
-    res.status(500).json({ error: "Failed to generate quiz questions" });
+    logger.error(err);
+    return res.status(500).json({
+      error: "[QuizContentService] Failed to generate quiz questions",
+    });
   }
 };

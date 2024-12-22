@@ -10,7 +10,9 @@ export interface LogPayload {
   level: string;
 }
 
-export interface LogParameters {
-  message: any;
-  correlationId: string;
+export interface LoggerSdkInterface {
+  setCorrelationId(correlationId: string): void;
+  info(message: any): void;
+  warn(message: any): void;
+  error(message: any): void;
 }

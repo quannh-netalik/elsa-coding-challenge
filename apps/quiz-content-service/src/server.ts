@@ -1,8 +1,13 @@
-import "./env";
-import "./mongoose";
+import "./utils/env";
+import "./utils/mongoose";
 import express, { Request, Response } from "express";
 
-import { auth, logIncomingRequest, errHandler } from "./middleware";
+import {
+  auth,
+  logIncomingRequest,
+  errHandler,
+  setCorrelationId,
+} from "./middleware";
 import { bootstrapData } from "./utils/bootstrapData";
 import { quizGeneration } from "./controller/quiz.controller";
 import { constant } from "./constant";
@@ -16,6 +21,7 @@ app.use(express.json());
 
 // Log incoming traffic and responses
 app.use(logIncomingRequest);
+app.use(setCorrelationId);
 
 app.get("/health", (_: Request, res: Response) => {
   res.status(200).send("Successful");
@@ -24,15 +30,16 @@ app.get("/health", (_: Request, res: Response) => {
 // POST /quiz-generation endpoint
 app.post("/quiz-generation", auth, quizGeneration);
 
+// 404 handler for unmatched routes
+app.use((req, res, next) => {
+  res.status(404).json({ error: "[QuizContentService] Route not found" });
+});
+
 // Error handler
 app.use(errHandler);
 
 // Start the server
 app.listen(PORT, async () => {
-  console.log(`[QuizContentService] is running on port ${PORT}`);
-  logger.info({
-    message: `[QuizContentService] is running on port ${PORT}`,
-    correlationId: "NA",
-  });
+  logger.info(`[QuizContentService] is running on port ${PORT}`);
   await bootstrapData();
 });
