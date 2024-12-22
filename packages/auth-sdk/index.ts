@@ -46,9 +46,7 @@ class AuthSdk {
   setCorrelationId(correlationId: string): void {
     this.correlationId = correlationId;
     this.client = this.setClient();
-    if (this.loggerSdk) {
-      this.loggerSdk.setCorrelationId(this.correlationId);
-    }
+    this.loggerSdk.setCorrelationId(this.correlationId);
   }
 
   /**

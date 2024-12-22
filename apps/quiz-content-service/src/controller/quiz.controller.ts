@@ -10,6 +10,14 @@ export const quizGeneration = async (
 ): Promise<any> => {
   const { numberOfQuestions } = req.body;
 
+  if (numberOfQuestions > constant.maxGeneratedQuestion) {
+    return res
+      .status(400)
+      .send(
+        `[QuizContentService] Max ${constant.maxGeneratedQuestion} questions per set`
+      );
+  }
+
   const count = Math.min(
     Math.max(numberOfQuestions || constant.defaultGeneratedQuestion, 1),
     constant.maxGeneratedQuestion

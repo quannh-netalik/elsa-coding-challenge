@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { logger } from "../utils/logger";
-import { authSdk } from "../utils/authSdk";
+import { quizContentSdk } from "../utils/quizContentSdk";
 
 export const setCorrelationId = (
   req: Request,
@@ -8,7 +8,7 @@ export const setCorrelationId = (
   next: NextFunction
 ): void => {
   const correlationId = req.headers["correlation-id"] as string;
-  authSdk.setCorrelationId(correlationId);
+  quizContentSdk.setCorrelationId(correlationId);
   logger.setCorrelationId(correlationId);
 
   next();
