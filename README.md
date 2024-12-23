@@ -60,7 +60,10 @@ This diagram will represent flow of the request:
 1. **Scalability**:
    - _Horizontal scaling_: Scaling out instances (on schedule, on threshold stats), adding replica for redis cluster, mongodb.
    - _Vertical scaling_: upgrading the core instances stats like RAM, CPU, etc.
-2. **Performance**: fronted by a load-balancer, api gateways
+2. **Performance**:
+   - Db: indexing, cold/hot partitioning, sharding and bulk operations.
+   - Throttling and Rate Limiting for services (either gateway level or application level)
+   - fronted by a load-balancer, api gateways
 3. **Reliability**:
    - Apply SAGA pattern for downstream services by providing fault tolerance. It improves scalability by decoupling services and supporting asynchronous processing, allowing for independent operation and scaling of downstream services.
    - Health-check other services before making request. We could add a health-check to the sdk of the service (ex: user-sdk ----health-check-----> user-service) on initiating.
