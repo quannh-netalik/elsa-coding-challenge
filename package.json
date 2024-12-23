@@ -10,6 +10,8 @@
   },
   "scripts": {
     "build": "lerna run build --parallel",
+    "build:apps": "lerna run build --scope quiz-session-socket --scope quiz-session-service --scope user-service --scope auth-service --scope quiz-content-service --parallel",
+    "build:packages": "lerna run build --scope auth-sdk --scope logger-sdk --scope quiz-content-sdk --scope quiz-session-sdk --scope user-sdk --parallel",
     "start": "lerna run start --scope quiz-session-socket --scope quiz-session-service --scope user-service --scope auth-service --scope quiz-content-service --stream",
     "dev": "lerna run dev --scope quiz-session-socket --scope quiz-session-service --scope user-service --scope auth-service --scope quiz-content-service --stream",
     "start:log": "node apps/logger-service/dist/server.js",
