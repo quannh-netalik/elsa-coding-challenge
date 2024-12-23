@@ -81,6 +81,7 @@ export const userInfo = async (req: Request, res: Response): Promise<any> => {
     logger.info(`[UserService] User info retrieved for ${payload.username}`);
 
     return res.status(200).json({
+      userId: user._id,
       firstName: user.firstName,
       lastName: user.lastName,
       username: user.username,

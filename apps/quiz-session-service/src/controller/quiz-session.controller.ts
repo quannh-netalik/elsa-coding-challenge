@@ -38,10 +38,7 @@ export const startSession = async (
       session,
     });
 
-    return res.status(201).send({
-      message: "[QuizSessionService] Quiz session started successfully",
-      session,
-    });
+    return res.status(201).send(session);
   } catch (error) {
     logger.error({
       message: "[QuizSessionService] Error starting quiz session.",
@@ -58,8 +55,7 @@ export const joinSession = async (
   req: Request,
   res: Response
 ): Promise<any> => {
-  const { sessionId } = req.params;
-  const { userId } = req.body;
+  const { userId, sessionId  } = req.body;
 
   if (!userId) {
     return res
@@ -71,6 +67,7 @@ export const joinSession = async (
     let session = await getCachedSession(sessionId);
 
     if (!session) {
+      console.log({sessionId})
       session = await QuizSession.findOne({ sessionId });
 
       if (!session) {
@@ -99,10 +96,12 @@ export const joinSession = async (
       await cacheSession(sessionId, session);
     }
 
-    return res.status(200).send({
+    logger.info({
       message: "[QuizSessionService] User joined the session successfully.",
       session,
-    });
+    })
+
+    return res.status(200).send(session);
   } catch (error) {
     logger.error({
       message: "[QuizSessionService] Error joining quiz session.",

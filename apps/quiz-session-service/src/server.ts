@@ -36,7 +36,7 @@ app.get("/health", (_: Request, res: Response) => {
 app.post("/start-session", auth, startSession);
 
 // Join a session API
-app.post("/join-session/:sessionId", auth, joinSession);
+app.post("/join-session", auth, joinSession);
 
 // Activate a session API
 app.post("/activate-session/:sessionId", auth, activateSession);

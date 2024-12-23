@@ -68,13 +68,13 @@ class UserServiceSdk {
    * @param {string} loginData.username - Username of the user
    * @param {string} loginData.password - Password for the user
    * @param {string} loginData.type - Type of the user ('internal' or 'guest')
-   * @returns {Promise<Object>} Response containing user details and token
+   * @returns {Promise<{ message: string; token: string }>} Response containing user details and token
    */
   async login(loginData: {
     username: string;
     password: string;
     type: "internal" | "guest";
-  }): Promise<Object> {
+  }): Promise<{ message: string; token: string }> {
     try {
       const response = await this.client.post("/login", loginData);
       this.loggerSdk.info(`User logged in successfully: ${loginData.username}`);
@@ -87,9 +87,16 @@ class UserServiceSdk {
   /**
    * Get user information
    * @param {string} token - Authorization token
-   * @returns {Promise<Object>} Response containing user information
+   * @returns {Promise<{ userId: string, firstName: string, lastName: string ,username: string}>} Response containing user information
    */
-  async getUserInfo(token: string): Promise<Object> {
+  async getUserInfo(
+    token: string
+  ): Promise<{
+    userId: string;
+    firstName: string;
+    lastName: string;
+    username: string;
+  }> {
     try {
       const response = await this.client.get("/user-info", {
         headers: { Authorization: `Bearer ${token}` },

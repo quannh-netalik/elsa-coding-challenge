@@ -44,7 +44,7 @@ class QuizSessionSdk {
    * @param {Object} sessionData - Data for the new session
    * @param {string[]} sessionData.userIds - List of user IDs
    * @param {number} sessionData.numberOfQuestions - Number of questions
-   * @returns {Promise<Object>} Response containing session details
+   * @returns {Promise<IQuizSession>} Response containing session details
    */
   async startSession(sessionData: {
     userIds: string[];
@@ -73,12 +73,14 @@ class QuizSessionSdk {
    */
   async joinSession(sessionId: string, userId: string): Promise<IQuizSession> {
     try {
-      const response = await this.client.post<IQuizSession>(
-        `/join-session/${sessionId}`,
-        {
-          userId,
-        }
-      );
+      this.loggerSdk.info({
+        message: "[QuizSessionSdk] Payload",
+        payload: { sessionId, userId },
+      });
+      const response = await this.client.post<IQuizSession>(`/join-session`, {
+        userId,
+        sessionId,
+      });
       this.loggerSdk.info({
         message: "[QuizSessionSdk] joinSession successful",
         session: response.data,
