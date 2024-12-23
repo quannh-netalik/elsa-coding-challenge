@@ -104,3 +104,23 @@ Then run all others services in the different terminal
 ```bash
 npm start
 ```
+
+### Data
+
+Quiz-content data is placed at [quiz.json](./apps/quiz-content-service/data/quiz.json) and it will be imported directly to the database once the service started.
+
+To create user data please hit this in the terminal:
+
+```terminal
+    curl --location 'http://localhost:8060/signup' \
+    --header 'x-api-key: THIS_IS_A_SECRET_KEY' \
+    --header 'correlation-id: 866c86a7-c640-406a-8d9f-c432e119e9aa' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "type": "internal",
+        "username": "abc1",
+        "firstName": "abc",
+        "lastName": "abc",
+        "password": "abc"
+    }'
+```
