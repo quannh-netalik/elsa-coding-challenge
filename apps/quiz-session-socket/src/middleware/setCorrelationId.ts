@@ -8,6 +8,8 @@ export const setCorrelationId = (
   res: Response,
   next: NextFunction
 ): void => {
+  // Self correlationId or received from client
+  // Ex: correlationId = uuidV4();
   const correlationId = req.headers["correlation-id"] as string;
   userSdk.setCorrelationId(correlationId);
   quizSessionSdk.setCorrelationId(correlationId);
