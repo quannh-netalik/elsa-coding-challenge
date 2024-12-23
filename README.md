@@ -55,7 +55,7 @@ This diagram will represent flow of the request:
 1. [QuizSessionService](./apps/quiz-session-service/) -> [UserSdk](./packages/user-sdk/) -> [UserService](./apps/user-service/) -> [AuthSdk](./packages/auth-sdk/) -> [AuthService](./apps/auth-service/) `(User verification and authentication)`
 2. [QuizSessionService](./apps/quiz-session-service/) -> [QuizContentSdk](./packages/quiz-content-sdk/) -> [QuizContentService](./apps/quiz-content-service/) `(Quiz generation)`
 
-### Build For the Future
+### Application Criteria
 
 1. **Scalability**:
    - _Horizontal scaling_: Scaling out instances (on schedule, on threshold stats), adding replica for redis cluster, mongodb.
@@ -76,6 +76,7 @@ This diagram will represent flow of the request:
    - Implement threshold for services based on stats like CPU, Ram, etc. When stats reach threshold, send email for notified the stakeholders or ops team to handle errors.
 6. **Security**:
    - Downstream services will communicate using normal HTTP request. The request need to be attached with `x-api-key` (API_KEY from .env files) in order to secure the servers. Every service that consume other services' sdk will need to pass `x-api-key` to the sdk before starting.
+   - Downstream services should use different api-key with client-server faced service.
    - _Snyk_: integrate with snyk in order to scan packages vulnerabilities or security risks. It also can help identify the potential problem in source code and giving recommendations.
 
 ## Setup
